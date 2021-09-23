@@ -2004,6 +2004,11 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                 operationId = operationId.substring(offset + 1);
             }
         }
+        int offset = operationId.indexOf('_');
+        if (offset > 1) {
+            operationId = operationId.substring(0,offset);
+        }
+
         operationId = removeNonNameElementToCamelCase(operationId);
         codegenOperation.path = path;
         codegenOperation.operationId = toOperationId(operationId);
